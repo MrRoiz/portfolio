@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 
 export default function TypingText({text, textClass = '', typingSpeed = 50, children}){
 
-    const [displayText, setDisplayText ] = useState('')
+    const [ displayText, setDisplayText ] = useState('')
     const [ renderChildren, setRenderChildren ] = useState(false)
     const [ blinkingCursor, setBlinkingCursor ] = useState(true)
 
