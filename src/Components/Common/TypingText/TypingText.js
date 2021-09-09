@@ -8,23 +8,23 @@ export default function TypingText({text, textClass = '', typingSpeed = 50, chil
     const [ blinkingCursor, setBlinkingCursor ] = useState(true)
 
     useEffect(()=>{
-        typeLetter()
-    },[displayText])
-
-    const typeLetter = async () => {
-        await new Promise(resolve=>{
-            setTimeout(resolve,typingSpeed)
-        })
-
-        if(text.length > displayText.length){
-            setDisplayText(displayText+text[displayText.length])
-        }else{
-            if(children){
-                setRenderChildren(true)
-                setBlinkingCursor(false)
+        const typeLetter = async () => {
+            await new Promise(resolve=>{
+                setTimeout(resolve,typingSpeed)
+            })
+    
+            if(text.length > displayText.length){
+                setDisplayText(displayText+text[displayText.length])
+            }else{
+                if(children){
+                    setRenderChildren(true)
+                    setBlinkingCursor(false)
+                }
             }
         }
-    }
+
+        typeLetter()
+    },[displayText])
 
     return (
         <>
