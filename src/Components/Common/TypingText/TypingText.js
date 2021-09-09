@@ -24,6 +24,8 @@ export default function TypingText({text, textClass = '', typingSpeed = 50, chil
         }
 
         typeLetter()
+        
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[displayText])
 
     return (
