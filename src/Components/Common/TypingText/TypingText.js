@@ -1,7 +1,7 @@
 import './TypingText.scss'
 import { useEffect, useState } from 'react'
 
-export default function TypingText({text, textClass = '', typingSpeed = 50, children}){
+export default function TypingText({text, textClass = '', typingSpeed = 50, children, onFinish = null}){
 
     const [ displayText, setDisplayText ] = useState('')
     const [ renderChildren, setRenderChildren ] = useState(false)
@@ -20,6 +20,8 @@ export default function TypingText({text, textClass = '', typingSpeed = 50, chil
                     setRenderChildren(true)
                     setBlinkingCursor(false)
                 }
+
+                if(onFinish) onFinish()
             }
         }
 
