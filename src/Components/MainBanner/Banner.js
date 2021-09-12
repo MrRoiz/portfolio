@@ -17,7 +17,8 @@ export default function MainBanner(){
     const startMainAnimation = ()=>{
         setAnimationFirstText({
             animate : {
-                x : 2000
+                x : 2000,
+                rotate : 360
             },
             transition : {
                 duration : .5
