@@ -1,41 +1,50 @@
 import './Banner.scss'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import useStore from '../../Store/Store'
+import ClickMe from './Components/ClickMe'
 import MainText from './Components/MainText'
 
 export default function MainBanner(){
-    const showMainBannerClickMe = useStore(state=>state.showMainBannerClickMe)
+    const showMainBannerClickMe = useStore(({showMainBannerClickMe}) => showMainBannerClickMe)
 
-    const renderClickMe = ()=>{
-        if(!showMainBannerClickMe) return
+    const [animationFirstText, setAnimationFirstText ] = useState({
+        animate : {},
+        transition : {}
+    })
 
-        return (
-            <motion.div
-                className='ml-6 button is-primary'
-                initial={{ scale: 0 }}
-                animate={{ rotate: 360, scale: 1 }}
-                transition={{
-                    type: 'spring',
-                    stiffness: 260,
-                    damping: 20
-                }}
-                onAnimationComplete={()=>console.log('test')}
-            >
-                Click me
-            </motion.div>
-        )
+    const startMainAnimation = ()=>{
+        // setAnimationFirstText({
+        //     animate : {
+        //         pathLength : 1
+        //     },
+        //     transition : {
+        //         duration : 2,
+        //         type : 'tween'
+        //     }
+        // })
+        setAnimationFirstText({
+            initial:{ scale: 0 },
+            animate:{ rotate: 360, scale: 1 },
+            transition:{
+                type: 'spring',
+                stiffness: 260,
+                damping: 20
+            }
+        })
     }
 
     return (
         <section className="hero is-dark is-fullheight">
-            <motion.div
-                className="hero-body"
-                // // animate={{x:0}}
-                // // transition={{ duration: 1}}
-            >
-                <MainText/>
-                {renderClickMe()}
-            </motion.div>
+            <div className="hero-body">
+                <motion.div
+                    className='is-flex is-flex-direction-row is-align-items-center'
+                    {...animationFirstText}
+                >
+                    <MainText/>
+                    {showMainBannerClickMe && <ClickMe handleClick={startMainAnimation}/>}
+                </motion.div>
+            </div>
         </section>
     )
 }

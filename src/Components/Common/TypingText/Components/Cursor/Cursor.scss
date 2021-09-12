@@ -1,0 +1,10 @@
+.blinking-cursor{
+    color: orange;
+    animation : 
+        blinking .75s infinite
+}
+
+@keyframes blinking{
+    from, to { color: transparent }
+    50% { color: orange; }
+}

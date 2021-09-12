@@ -1,4 +1,5 @@
 import './TypingText.scss'
+import Cursor from './Components/Cursor/Cursor'
 import { useEffect, useState } from 'react'
 
 export default function TypingText({text, textClass = '', typingSpeed = 50, children, onFinish = null}){
@@ -33,8 +34,8 @@ export default function TypingText({text, textClass = '', typingSpeed = 50, chil
     return (
         <>
             <div className='is-flex'>
-                <p className={`${textClass} ${blinkingCursor && 'blinking-cursor'}`}>
-                    {displayText}
+                <p className={textClass}>
+                    {displayText}{blinkingCursor && <Cursor/>}
                 </p>
             </div>
             {renderChildren && children}
