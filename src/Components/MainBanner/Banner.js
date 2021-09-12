@@ -7,6 +7,7 @@ import MainText from './Components/MainText'
 
 export default function MainBanner(){
     const showMainBannerClickMe = useStore(({showMainBannerClickMe}) => showMainBannerClickMe)
+    const [ showFirstText, setShowFirstText ] = useState(true)
 
     const [animationFirstText, setAnimationFirstText ] = useState({
         animate : {},
@@ -14,22 +15,12 @@ export default function MainBanner(){
     })
 
     const startMainAnimation = ()=>{
-        // setAnimationFirstText({
-        //     animate : {
-        //         pathLength : 1
-        //     },
-        //     transition : {
-        //         duration : 2,
-        //         type : 'tween'
-        //     }
-        // })
         setAnimationFirstText({
-            initial:{ scale: 0 },
-            animate:{ rotate: 360, scale: 1 },
-            transition:{
-                type: 'spring',
-                stiffness: 260,
-                damping: 20
+            animate : {
+                x : 2000
+            },
+            transition : {
+                duration : .5
             }
         })
     }
@@ -37,13 +28,16 @@ export default function MainBanner(){
     return (
         <section className="hero is-dark is-fullheight">
             <div className="hero-body">
-                <motion.div
-                    className='is-flex is-flex-direction-row is-align-items-center'
-                    {...animationFirstText}
-                >
-                    <MainText/>
-                    {showMainBannerClickMe && <ClickMe handleClick={startMainAnimation}/>}
-                </motion.div>
+                {showFirstText && 
+                    <motion.div
+                        className='is-flex is-flex-direction-row is-align-items-center'
+                        {...animationFirstText}
+                        onAnimationComplete={()=>setShowFirstText(false)}
+                    >
+                        <MainText/>
+                        {showMainBannerClickMe && <ClickMe handleClick={startMainAnimation}/>}
+                    </motion.div>
+                }
             </div>
         </section>
     )
