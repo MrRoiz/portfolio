@@ -2,4 +2,16 @@ $background:#232323;
 $dark:#151515;
 $primary:#721212;
 
+body{
+    height:100vh;
+    max-height: 100vh;
+    border:1px black solid;
+    background : radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+    overflow:hidden;
+}
+
+.is-full-height{
+    height:100vh;
+}
+
 @import 'bulma'
