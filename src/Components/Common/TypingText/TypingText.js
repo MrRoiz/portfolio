@@ -31,6 +31,10 @@ export default function TypingText({text, textClass = '', typingSpeed = 50, chil
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[displayText])
 
+    useEffect(()=>{
+        setDisplayText('')
+    },[text])
+
     return (
         <>
             <div className='is-flex'>
