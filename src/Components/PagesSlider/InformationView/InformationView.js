@@ -7,9 +7,12 @@ export default function InformationView(){
     }))
 
     return (
-        <div className='content'>
-            <h1 className='title has-text-white'>About me</h1>
-            <p className='has-text-white'>I'm {age} years old, with {experienceTime} years of experience in software development</p>
+        <div className='is-flex is-flex-wrap-wrap'>
+            <div className='content'>
+                <h1 className='title has-text-white'>About me</h1>
+                <p className='subtitle has-text-white'>I'm {age} years old, with {experienceTime} years of experience in software development</p>
+            </div>
+            
         </div>
     )
 }
